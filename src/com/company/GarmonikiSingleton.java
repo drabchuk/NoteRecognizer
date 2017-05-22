@@ -25,7 +25,9 @@ public class GarmonikiSingleton {
         for (int phase = 0; phase < phasesCount; phase++) {
             for (int j = 0; j < allNotesCount; j++) {
                 sygnals[j][phase] = SygnalImitator.getSygnal(allFrequencies[j], phase);
+                //System.out.println(j);
             }
+            //System.out.println("phase" + phase);
         }
 
     }
@@ -36,10 +38,9 @@ public class GarmonikiSingleton {
 
     public static GarmonikiSingleton getInstance() {
         if (instance == null) {
-            return new GarmonikiSingleton();
-        } else {
-            return instance;
+            instance = new GarmonikiSingleton();
         }
+        return instance;
     }
 
 }

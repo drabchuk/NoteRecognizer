@@ -18,17 +18,18 @@ public class FourierFactorization {
 
         int[] res = new int[allNotesCount];
 
-        Notes[] notes = Notes.values();
+        /*Notes[] notes = Notes.values();
         double[] allFrequencies = new double[allNotesCount];
         for (int i = 1; i < octavesCount + 1; i++) { //octaves
             for (int j = 0; j < notesCount; j++) {//notes
                 allFrequencies[notesCount * (i - 1) + j] = notes[j].frequency * i;
             }
-        }
+        }*/
         int tmp;
         for (int phase = 0; phase < 360; phase++) {
             for (int j = 0; j < allNotesCount; j++) {
-                tmp = factorizeGarmonic(allFrequencies[j], phase);
+                //tmp = factorizeGarmonic(allFrequencies[j], phase);
+                tmp = factorizeGarmonic(j, phase);
                 if (tmp > res[j]) {
                     res[j] = tmp;
                 }
@@ -39,6 +40,11 @@ public class FourierFactorization {
 
     private int factorizeGarmonic(double frequency, double phase) {
         byte[] garmonika = SygnalImitator.getSygnal(frequency, phase);
+        return scalarMult(sygnal, garmonika);
+    }
+
+    private int factorizeGarmonic(int note, int phase) {
+        byte[] garmonika = GarmonikiSingleton.getInstance().getSygnal(note, phase);
         return scalarMult(sygnal, garmonika);
     }
 
