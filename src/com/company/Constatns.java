@@ -9,5 +9,6 @@ public interface Constatns {
     int notesCount = 12;
     int octavesCount = 8;
     int allNotesCount = notesCount * octavesCount;
+    int phasesCount = 360;
 
 }
